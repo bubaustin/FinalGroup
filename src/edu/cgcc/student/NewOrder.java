@@ -1,23 +1,69 @@
 package edu.cgcc.student;
 
+import javax.swing.*;
+
 public class NewOrder {
+	private static int orderNumberCurrent = 0;
+	public static void createOrder(){
+		//Initialize variables---------------------------------
+		String input;
+		String orderDate;
+		String orderNumber = String.valueOf(orderNumberCurrent);
+		String CustomerName;
+		String CustomerNumber;
+		String BillingAddress;
+		String ShippingAddress;
+		String[] productName = new String[10];
+		String[] productAmount = new String[10];
+		String[] productPrice = new String[10];
+		OrderClass[] orderArray = new OrderClass[30];
 
-	String orderDate;
-	String orderNumber;
-	String CustomerName;    
-	String CustomerNumber;    
-	String BillingAddress;
-	String ShippingAddress;
-	String[] product = new String[10];
 
-	boolean Paid;
-	boolean Packaged;
-	boolean Shipped;
-	boolean Complete;
+		//Collect input from user------------------------------
+		System.out.println("Order Date");
+		orderDate = Driver.input();
+		System.out.println("Customer Number");
+		CustomerNumber = Driver.input();
+		System.out.println("Customer Name");
+		CustomerName = Driver.input();
+		System.out.println("Billing Address");
+		BillingAddress = Driver.input();
+		System.out.println("Shipping Address");
+		ShippingAddress = Driver.input();
 
-	
-	public static void order(){
-		System.out.println("");
-		
+		//Collect Product order info in the form of arrays-------------------
+		int i =0;
+		do{
+			System.out.println("Product Name");
+			productName[i] = Driver.input();
+			System.out.println("Product Amount");
+			productAmount[i] = Driver.input();
+			System.out.println("Product Price");
+			productPrice[i] = Driver.input();
+
+			//Ask if another product---------------------------
+			System.out.println("Another Product?	Y/N");
+			i++;
+		}while(Driver.input().toLowerCase().equals("y"));
+
+		//Print inputs and ask confirmation-----------------------------------------------
+		System.out.println("orderDate:		"+orderDate);
+		System.out.println("orderNumber		"+orderNumber);
+		System.out.println("CustomerName	"+CustomerName);
+		System.out.println("BillingAddress	"+BillingAddress);
+		System.out.println("ShippingAddress	"+ShippingAddress);
+		for( i =0; (i<productName.length)&&(productName[i]!=null); i++){
+			System.out.println(productName[i]+"   "+productAmount[i]+"   "+productPrice[i]);
+		}
+
+
+
+		System.out.println("Create Order?	Y/N");
+		if(Driver.input().toLowerCase().equals("y")){
+			orderArray[orderNumberCurrent] = new OrderClass (orderDate, orderNumber, CustomerName, CustomerNumber, BillingAddress, ShippingAddress, productName, productAmount, productPrice);
+			orderNumberCurrent++;
+			System.out.println("Order Added!");
+		}
+
 	}
 }

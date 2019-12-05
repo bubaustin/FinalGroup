@@ -13,12 +13,12 @@ public class Driver {
 
 	private static void start() {
 		while(true) {
-			System.out.println("1) New Order \n2) List All Orders \n3) View Single Order");
+			System.out.println("1) New Order \n2) List All Orders \n3) View Single Order \nstop) Exit Program");
 		
 			switch(input()){
 			
 			case "1":
-				NewOrder.order();
+				NewOrder.createOrder();
 				System.out.println("orderdone");
 				break;
 			case "2":
@@ -27,6 +27,8 @@ public class Driver {
 			case "3":
 				//ViewOne.allInfo();
 				break;
+			case "stop":
+                    return;
 			}
 		}
 	}
