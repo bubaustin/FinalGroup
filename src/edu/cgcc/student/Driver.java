@@ -13,19 +13,20 @@ public class Driver {
 
 	private static void start() {
 		while(true) {
+			
+			Driver.clearConsol();
 			System.out.println("1) New Order \n2) List All Orders \n3) View Single Order \nstop) Exit Program");
 		
 			switch(input()){
 			
 			case "1":
 				NewOrder.createOrder();
-				System.out.println("orderdone");
 				break;
 			case "2":
-				//ViewAllOrders.listorderinfo();
+				ViewAllOrder.printAllList();
 				break;
 			case "3":
-				//ViewOne.allInfo();
+				ViewOne.viewOne();
 				break;
 			case "stop":
                     return;
@@ -42,5 +43,10 @@ public class Driver {
 	           e.printStackTrace();
 	       }
 	    return "problem in input";
+	 }
+	 public static void clearConsol() {
+	    	for(int x=0; x<5; x++) {
+	    	  System.out.print("\n");
+	    	}
 	 }
 }

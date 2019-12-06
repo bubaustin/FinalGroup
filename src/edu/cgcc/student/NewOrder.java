@@ -1,14 +1,13 @@
 package edu.cgcc.student;
 
-import javax.swing.*;
-
 public class NewOrder {
-	private static int orderNumberCurrent = 0;
+	public static int orderNumberCurrent = 0;
+	public static OrderClass[] orderArray = new OrderClass[4];
 	public static void createOrder(){
 		//Initialize variables---------------------------------
-		String input;
 		String orderDate;
 		String orderNumber = String.valueOf(orderNumberCurrent);
+		//System.out.println(String.valueOf(orderNumber)+ String.valueOf(orderNumberCurrent));
 		String CustomerName;
 		String CustomerNumber;
 		String BillingAddress;
@@ -16,10 +15,11 @@ public class NewOrder {
 		String[] productName = new String[10];
 		String[] productAmount = new String[10];
 		String[] productPrice = new String[10];
-		OrderClass[] orderArray = new OrderClass[30];
+		//orderArray =  new  OrderClass[30];
 
 
 		//Collect input from user------------------------------
+		Driver.clearConsol();
 		System.out.println("Order Date");
 		orderDate = Driver.input();
 		System.out.println("Customer Number");
@@ -47,6 +47,7 @@ public class NewOrder {
 		}while(Driver.input().toLowerCase().equals("y"));
 
 		//Print inputs and ask confirmation-----------------------------------------------
+		Driver.clearConsol();
 		System.out.println("orderDate:		"+orderDate);
 		System.out.println("orderNumber		"+orderNumber);
 		System.out.println("CustomerName	"+CustomerName);
@@ -55,7 +56,7 @@ public class NewOrder {
 		for( i =0; (i<productName.length)&&(productName[i]!=null); i++){
 			System.out.println(productName[i]+"   "+productAmount[i]+"   "+productPrice[i]);
 		}
-
+		Driver.clearConsol();
 
 
 		System.out.println("Create Order?	Y/N");
