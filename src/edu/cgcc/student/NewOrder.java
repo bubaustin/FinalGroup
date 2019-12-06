@@ -8,10 +8,11 @@ public class NewOrder {
 		String orderDate;
 		String orderNumber = String.valueOf(orderNumberCurrent);
 		//System.out.println(String.valueOf(orderNumber)+ String.valueOf(orderNumberCurrent));
-		String CustomerName;
-		String CustomerNumber;
-		String BillingAddress;
-		String ShippingAddress;
+		String customerName;
+		String salesAss;
+		String customerNumber;
+		String billingAddress;
+		String shippingAddress;
 		String[] productName = new String[10];
 		String[] productAmount = new String[10];
 		String[] productPrice = new String[10];
@@ -22,14 +23,16 @@ public class NewOrder {
 		Driver.clearConsol();
 		System.out.println("Order Date");
 		orderDate = Driver.input();
-		System.out.println("Customer Number");
-		CustomerNumber = Driver.input();
 		System.out.println("Customer Name");
-		CustomerName = Driver.input();
+		customerName = Driver.input();
+		System.out.println("Customer Number");
+		customerNumber = Driver.input();
+		System.out.println("Sales Associate");
+		salesAss = Driver.input();
 		System.out.println("Billing Address");
-		BillingAddress = Driver.input();
+		billingAddress = Driver.input();
 		System.out.println("Shipping Address");
-		ShippingAddress = Driver.input();
+		shippingAddress = Driver.input();
 
 		//Collect Product order info in the form of arrays-------------------
 		int i =0;
@@ -42,26 +45,28 @@ public class NewOrder {
 			productPrice[i] = Driver.input();
 
 			//Ask if another product---------------------------
-			System.out.println("Another Product?	Y/N");
+			System.out.println("\n\nTo Include Another Product Enter 'y'\n or Press ENTER to Continue");
 			i++;
 		}while(Driver.input().toLowerCase().equals("y"));
 
 		//Print inputs and ask confirmation-----------------------------------------------
 		Driver.clearConsol();
 		System.out.println("orderDate:		"+orderDate);
+		System.out.println("CustomerName		"+customerName);
 		System.out.println("orderNumber		"+orderNumber);
-		System.out.println("CustomerName	"+CustomerName);
-		System.out.println("BillingAddress	"+BillingAddress);
-		System.out.println("ShippingAddress	"+ShippingAddress);
+		System.out.println("Sales Associate		"+salesAss);
+		System.out.println("BillingAddress		"+billingAddress);
+		System.out.println("ShippingAddress		"+shippingAddress);
+		System.out.println("\nProduct name 	Ammount		Price\n");
 		for( i =0; (i<productName.length)&&(productName[i]!=null); i++){
-			System.out.println(productName[i]+"   "+productAmount[i]+"   "+productPrice[i]);
+			System.out.println(productName[i]+" 	  "+productAmount[i]+"  	 "+productPrice[i]);
 		}
 		Driver.clearConsol();
 
 
-		System.out.println("Create Order?	Y/N");
+		System.out.println("To Create This Order Enter 'y'"+"/n"+"or Press ENTER to Cancel");
 		if(Driver.input().toLowerCase().equals("y")){
-			orderArray[orderNumberCurrent] = new OrderClass (orderDate, orderNumber, CustomerName, CustomerNumber, BillingAddress, ShippingAddress, productName, productAmount, productPrice);
+			orderArray[orderNumberCurrent] = new OrderClass (orderDate, orderNumber, customerName, salesAss, customerNumber, billingAddress, shippingAddress, productName, productAmount, productPrice);
 			orderNumberCurrent++;
 			System.out.println("Order Added!");
 		}

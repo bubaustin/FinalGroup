@@ -10,7 +10,7 @@ public class ViewOne {
 		 try { int i = Integer.parseInt(Driver.input());
 	        OrderSelected = i;
 	        NewOrder.orderArray[i].printViewOne();
-	        System.out.println("\n\nEnter Y to change Status?\n Press Enter to Continue");
+	        System.out.println("\n\nEnter Y to change Status or Press Enter to Continue");
 	        String choice = Driver.input();
 	        if(choice.equals("Y")|choice.contentEquals("y")) {
 	     	   System.out.println("Toggle status of? \r\n"+
